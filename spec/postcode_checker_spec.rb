@@ -2,10 +2,9 @@ require './lib/postcode_checker'
 
 describe 'Postcode_checker' do
   let(:parliament) { {postcode: "SW1A0AA", lsoa:"Westminster 020C"} }
-
   let(:lambeth_palace) { {postcode: "SE17JU", lsoa: "Lambeth 036A"} }
   let(:palace_with_spaces) { " SE1 7 JU  " }
-
+  let(:unknown_serviceable) { "SH24 1AA" }
   let(:southwark_cathedral) { {postcode: "SE19DA", lsoa: "Southwark 002B"} }
 
 
@@ -30,6 +29,10 @@ describe 'Postcode_checker' do
 
     it 'returns true if a postcode is in Southwark' do
       expect(@checker.whitelist?(southwark_cathedral[:postcode])).to eq true
+    end
+
+    it 'returns true if a postcode is in the list of unknown but serviceable postcodes' do
+      expect(@checker.whitelist?(unknown_serviceable)).to eq true
     end
 
     it 'whitelist returns false if a postcode is not in Lambeth or Southwark' do
