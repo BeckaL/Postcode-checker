@@ -14,7 +14,7 @@ class Postcode_checker
     postcode_info["result"]["lsoa"] if postcode_info["status"] == 200
   end
 
-  def whitelist?(postcode)
+  def serviceable?(postcode)
     lsoa = output_lsoa(postcode)
     if lsoa
       lsoa_text = lsoa.split(' ').first

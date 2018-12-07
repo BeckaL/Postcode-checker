@@ -24,19 +24,19 @@ describe 'Postcode_checker' do
 
   describe '#whitelist' do
     it "returns true if a postcode is in Lambeth" do
-      expect(@checker.whitelist?(lambeth_palace[:postcode])).to eq true
+      expect(@checker.serviceable?(lambeth_palace[:postcode])).to eq true
     end
 
     it 'returns true if a postcode is in Southwark' do
-      expect(@checker.whitelist?(southwark_cathedral[:postcode])).to eq true
+      expect(@checker.serviceable?(southwark_cathedral[:postcode])).to eq true
     end
 
     it 'returns true if a postcode is in the list of unknown but serviceable postcodes' do
-      expect(@checker.whitelist?(unknown_serviceable)).to eq true
+      expect(@checker.serviceable?(unknown_serviceable)).to eq true
     end
 
     it 'whitelist returns false if a postcode is not in Lambeth or Southwark' do
-      expect(@checker.whitelist?(parliament[:postcode])).to eq false
+      expect(@checker.serviceable?(parliament[:postcode])).to eq false
     end
   end
 end
