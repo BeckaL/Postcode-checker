@@ -2,14 +2,15 @@ require 'httparty'
 
 class Postcode_checker
 
-  def initialize
+  def initialize(postcode_api = 'https://api.postcodes.io/postcodes/')
     @whitelist_lsoas = ['Lambeth', 'Southwark']
     @whitelisted_unknown_postcodes = ['SH241AA', 'SH241AB']
+    @postcode_api = postcode_api
   end
 
   def output_lsoa(postcode)
     cleansed_pc = cleanse_postcode(postcode)
-    postcode_info = HTTParty.get("https://api.postcodes.io/postcodes/#{cleansed_pc}")
+    postcode_info = HTTParty.get("#{@postcode_api}#{cleansed_pc}")
     postcode_info["result"]["lsoa"] if postcode_info["status"] == 200
   end
 
