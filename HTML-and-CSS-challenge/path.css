@@ -1,0 +1,24 @@
+.uncomplete {
+  border:none;
+  border-top: 2px #fefefe solid;
+  height: 2px;
+}
+
+.completed {
+  border-color: #000000;
+}
+
+.registration_journey {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.stage {
+  padding-top: 10px;
+  background-color: #ffd733;
+}
+
+span {
+  padding: 10px;
+  font-family: 'Gill Sans'
+}
