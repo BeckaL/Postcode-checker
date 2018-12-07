@@ -11,7 +11,7 @@ class Postcode_checker
   def output_lsoa(postcode)
     cleansed_pc = cleanse_postcode(postcode)
     postcode_info = HTTParty.get("#{@postcode_api}#{cleansed_pc}")
-    postcode_info["result"]["lsoa"] if postcode_info["status"] == 200
+    postcode_info['result']['lsoa'] if postcode_info['status'] == 200
   end
 
   def serviceable?(postcode)
@@ -27,6 +27,6 @@ class Postcode_checker
   private
 
   def cleanse_postcode(postcode)
-    postcode.gsub(' ', '')
+    postcode.delete(' ')
   end
 end
